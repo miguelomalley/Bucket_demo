@@ -1,0 +1,9 @@
+torch>=2.0.0
+numpy>=1.22.0
+opencv-python>=4.5.0
+tqdm>=4.65.0
+ipywidgets>=8.0.0
+pyvista[jupyter]
+gudhi
+trimesh
+matplotlib
