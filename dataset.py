@@ -27,7 +27,7 @@ class ScrewMeshDataset(Dataset):
         # make unique path name for the cache file based on the dataset root directory
         os.makedirs(cache_dir, exist_ok=True)
         folder_slug = os.path.basename(os.path.normpath(root_dir)).replace(" ", "_")
-        cache_file = os.path.join(cache_dir, f"topo_cache_{folder_slug}.npz")
+        cache_file = os.path.join(cache_dir, f"pers_cache_{folder_slug}.npz")
 
         # check if cached already
         if os.path.exists(cache_file):
