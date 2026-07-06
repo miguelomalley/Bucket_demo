@@ -17,7 +17,7 @@ This repo contains some brief work on a classifier network using persistent homo
 
 We include training and validation data for the subset of the dataset we make use of, but the full dataset can be found here:
 
-[https://engineering.purdue.edu/cdesign/wp/a-large-scale-annotated-mechanical-components-benchmark-for-classification-and-retrieval-tasks-with-deep-neural-networks/#:~:text=introduce%20a%20large%2Dscale%20annotated,feature%20learning%20for%20mechanical%20components.][MCB Dataset]
+[MCBDataset](https://engineering.purdue.edu/cdesign/wp/a-large-scale-annotated-mechanical-components-benchmark-for-classification-and-retrieval-tasks-with-deep-neural-networks/#:~:text=introduce%20a%20large%2Dscale%20annotated,feature%20learning%20for%20mechanical%20components.)
 
 We specifically use Dataset A. This dataset is a collected resource of annotated mechanical components, formatted in .obj files. Parts are collected from sources such as TraceParts, 3D Warehouse, and GrabCAD, then purified and annotated. For more information, see:
 
