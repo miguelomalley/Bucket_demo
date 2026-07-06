@@ -65,14 +65,22 @@ jupyter notebook
 ```
 and check out our Demo.ipnyb.
 
+## Results
+Accuracy results for our PersNet and Conv3D classifier networks on a subset of the MCB dataset.
 
+| Metric / Class | PersNet | Conv3DNet |
+| :--- | :---: | :---: |
+| **Overall Accuracy** | **96.23%** | **86.69%** |
+| Accuracy [Normal] | 96.82% | 90.99% |
+| Accuracy [Hole] | 97.70% | 84.28% |
+| Accuracy [Dent] | 94.17% | 84.81% |
 
 ### Some conclusions and thoughts
 
 - Persistent homology makes use of the mesh through aligning features directionally, so that the persistent features are lossless vis a vis resolution but not direction. This is why 8 distinct directions were used for this demo. However, it may be the case that even better results can be gleaned with a simplicial convolutional neural network built over the faces of the simplices, since the persistence is already so informative. The roadblocks for this are:
   - Tuning. SCNNs are high information but require some thought as to the weighting of the cochains (the initial weights placed on vertices based on their neighbors). This would not prevent implemenation, but would probably make it take some committed time to getting to work.
   - Defects to detect. This repo contains code to generate two defects, holes and dents. As-is, SCNNs would be overengineered to resolve questions related to detecting these on a dataset as small as the subset we use here, as persistence is already sufficient to the task armed with just a MLP-type classifier. However, for more complex datasets with more products and more types of defects, a more robust network may be significantly more successful.
-- Persistence added immense signal and classification quality for this task, but could perhaps be faster to preprocess.
+- Persistence added immense signal and classification quality for this task, but could perhaps be faster to preprocess. Barcodes are much easier to train on, however, as the size on disk for the full dataset was only 2MB.
 - The data used in this repo is sourced from a collection using real scans, but the defects introduced are synthetic. Real defects are likely not so clean cut, and often 'how' something has failed requires its own specialized classification system. It is likely that, in a production environment, a network similar to this would very successfully detect severe faults, but may become confused by significant variance in parts, data defects, unexpected failure modes, etc.
   - Making a network like this robust against more object types is easy enough, the training set needs to be expanded. If the object type is also known beforehand, this can be provided to the network. Improvements could also be made by simulating different types of failures more robustly.
 - To become a production fault detection system, it would be helpful to have a large annotated dataset with various parts and failure modes to derive information from. For holes and dents, persistent homology was the correct tool. However, for more shallow dents, structural instability, or more complicated failure modes, a more sophisticated network/data structure may make sense. Having a large dataset to work with through an approach like this would make it easier to identify what works and what doesn't.
